@@ -1,0 +1,51 @@
+# config.yml example, I only use this to configure the scripts
+etl:
+  data_name: "credit_fraud"
+  external_data_url: ['mlg-ulb/creditcardfraud','dansbecker/hospital-readmissions']
+  external_data_path: "data/external/"
+  raw_data_path: "data/raw/"
+  target: "Class"
+  processed_data_path: "data/processed/"
+  
+
+train:
+  processed_train: "data/processed/creditcard.engineered.pkl" 
+  ensemble_model: "xgb"
+  model_config: {
+    'max_depth': 4,
+    'objective': 'binary:logistic',
+    'random_state': 0,
+    'eval_metric': 'auc'}
+  model_eval: "roc_auc"
+  model_path: "models/rf_model.pkl"
+  test_size: 0.2
+  random_state: 42
+
+#Define the GAN and training parameters
+gan_train:
+  model_path: "models/"
+  gan_args: {
+    'batch_size' : 128,
+    'learning_rate' : 0.0005,
+    'beta_1' : 0.5,
+    'beta_2' : 0.9,
+    'noise_dim' : 32,
+    'input_shape': 31,
+    'dim' : 128 }
+  train_args: {
+    'prefix': '',
+    'epochs' : 5001,
+    'log_step' : 100
+  }
+  model_name : "wgangp"
+
+gan_evaluate:
+  test_size: 473
+  random_state: 42
+  noise_dim: 32
+
+# predict:
+#   model_path: "model/rf_model.pkl"
+#   processed_test: "data/test.csv"
+#   predicted_file: "data/predict.csv"
+#   export_result: True
