@@ -68,7 +68,7 @@ cd gans-demo
 ```
 conda env create 
 
-conda activate base
+conda activate gans-demo
 
 ```
 4. Setup conda env in terminal
