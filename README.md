@@ -1,7 +1,7 @@
 gans-demo
 ==============================
 
-gans for creating synthetic data
+A demo for using GANs for creating synthetic data from Kaggle credit fraud dataset
 
 Project Organization
 ------------
